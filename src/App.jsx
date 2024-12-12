@@ -53,7 +53,36 @@ function App() {
       });
       const data = await response.json();
 
-      if ([
+      if (data === "What's up degen! Welcome to Giga Terminal. Giga Chad, diamond hands, gay, rugger or nigger? Answer a few questions and you will figure it out. Ready to start?") {
+        setblockedInput(true)
+        setchat([...chat, {
+          toMe: true,
+          message: "What's up degen! Welcome to Giga Terminal."
+        }])
+        setTimeout(() => {
+          setchat([...chat, {
+            toMe: true,
+            message: "What's up degen! Welcome to Giga Terminal."
+          }, {
+            toMe: true,
+            message: "Giga Chad, diamond hands, gay, rugger or nigger? Answer a few questions and you will figure it out."
+          }])
+        }, 2000);
+        setTimeout(() => {
+          setchat([...chat, {
+            toMe: true,
+            message: "What's up degen! Welcome to Giga Terminal."
+          }, {
+            toMe: true,
+            message: "Giga Chad, diamond hands, gay, rugger or nigger? Answer a few questions and you will figure it out."
+          }, {
+            toMe: true,
+            message: "Ready to start?"
+          }])
+          setblockedInput(false)
+        }, 4000);
+
+      } else if ([
         "Rugger",
         "Nigger",
         "Gay",
@@ -140,7 +169,36 @@ function App() {
       }),
     });
     const data = await response.json();
-    if ([
+    if (data === "What's up degen! Welcome to Giga Terminal. Giga Chad, diamond hands, gay, rugger or nigger? Answer a few questions and you will figure it out. Ready to start?") {
+      setblockedInput(true)
+      setchat([...chat, {
+        toMe: true,
+        message: "What's up degen! Welcome to Giga Terminal."
+      }])
+      setTimeout(() => {
+        setchat([...chat, {
+          toMe: true,
+          message: "What's up degen! Welcome to Giga Terminal."
+        }, {
+          toMe: true,
+          message: "Giga Chad, diamond hands, gay, rugger or nigger? Answer a few questions and you will figure it out."
+        }])
+      }, 2000);
+      setTimeout(() => {
+        setchat([...chat, {
+          toMe: true,
+          message: "What's up degen! Welcome to Giga Terminal."
+        }, {
+          toMe: true,
+          message: "Giga Chad, diamond hands, gay, rugger or nigger? Answer a few questions and you will figure it out."
+        }, {
+          toMe: true,
+          message: "Ready to start?"
+        }])
+        setblockedInput(false)
+      }, 4000);
+
+    } else if ([
       "Rugger",
       "Nigger",
       "Gay",
