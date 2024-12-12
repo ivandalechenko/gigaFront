@@ -1,0 +1,120 @@
+.App {
+    width: 100%;
+    max-height: 100vh;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+
+    &_terminalAndDeco {
+        position: relative;
+        z-index: 99;
+        width: 100%;
+        left: 5vh;
+
+        input {
+            pointer-events: none;
+            opacity: 0;
+        }
+
+    }
+
+    &_terminal {
+        height: 90vh;
+        width: calc(100vw - 800px);
+        min-width: 300px;
+        border-radius: 24px;
+        padding: 48px;
+        background: #000;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: end;
+        align-content: end;
+        row-gap: 24px;
+        overflow: hidden;
+
+        &_element {
+            width: 100%;
+            display: flex;
+            align-items: start;
+            column-gap: 16px;
+
+            &_from {
+                min-width: 68px;
+            }
+
+            &_from,
+            &_text {
+                font-size: 32px;
+                color: #63E940;
+            }
+
+            &_text_caret {
+                min-width: 20px;
+                min-height: 30px;
+                background: #63E940;
+                display: inline-block;
+                animation: blink 1s steps(1, start) infinite;
+
+                @keyframes blink {
+
+                    0%,
+                    49% {
+                        opacity: 1;
+                    }
+
+                    50%,
+                    100% {
+                        opacity: 0;
+                    }
+                }
+
+
+                &_wrapper {
+                    display: inline-flex !important;
+                    top: 2px;
+                    justify-content: left !important;
+                    left: 0px;
+                }
+            }
+        }
+    }
+
+    &_decor {
+        // height: 100vh;
+        display: flex;
+        width: 100% !important;
+        justify-content: right;
+
+        .free_img {
+            justify-content: right;
+            align-items: end;
+            transition: opacity 100ms;
+        }
+    }
+
+    &_bgs {
+        width: 100%;
+    }
+
+    &_bg,
+    &_bgLight {
+        width: 100%;
+        justify-content: center;
+        align-items: start;
+        transition: opacity 100ms;
+
+        &_inner {
+            min-width: 100vw;
+            min-height: 100vh;
+            background: linear-gradient(80deg, #464646, #595959);
+        }
+    }
+
+    &_bgLight {
+        &_inner {
+            background: linear-gradient(80deg, #434E41, #536151);
+        }
+    }
+}
