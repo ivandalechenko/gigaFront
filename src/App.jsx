@@ -308,7 +308,7 @@ function App() {
         <div className="free_img">
           <img src="/img/gigaSer.png" alt="" />
         </div>
-        <div className="free_img" style={{
+        <div className="free_img App_decor_light" style={{
           opacity: opacity
         }}>
           <img src="/img/gigaSerLight.png" alt="" />
