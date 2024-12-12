@@ -6,10 +6,11 @@ function App() {
   const [count, setCount] = useState(0)
   const [opacity, setopacity] = useState(0);
   const inputRef = useRef(null);
+  const [IsFocused, setIsFocused] = useState(false);
   const [text, settext] = useState('');
   const [blockedInput, setblockedInput] = useState(false);
   const [chat, setchat] = useState([]);
-  const [id, setid] = useState(localStorage.getItem('id') || '');
+  // const [id, setid] = useState(localStorage.getItem('id') || '');
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key.length !== 1) {
@@ -26,21 +27,27 @@ function App() {
     };
   }, []);
 
+  const getId = () => {
+    const id = localStorage.getItem('id')
+    if (!id) {
+      const newId = `${Date.now()}${Math.floor(Math.random() * 100000)}`
+      localStorage.setItem('id', newId)
+      return newId
+    } else {
+      return id
+    }
+  }
 
   useEffect(() => {
-    const initedId = id || `${Date.now()}${Math.floor(Math.random() * 100000)}`;
-    if (!id) {
-      setid(initedId)
-      localStorage.setItem('id', initedId)
-    }
+
     const init = async () => {
-      const response = await fetch('http://localhost:5000/quest/getQuest/', {
+      const response = await fetch('https://gigai.co/quest/getQuest/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json' // Исправленный заголовок
         },
         body: JSON.stringify({
-          id: initedId
+          id: getId()
         }),
       });
       const data = await response.json();
@@ -109,7 +116,7 @@ function App() {
       },
       body: JSON.stringify({
         answer: sentText,
-        id
+        id: getId()
       }),
     });
     const data = await response.json();
@@ -153,7 +160,9 @@ function App() {
       </div>
       <div className='App_terminalAndDeco'>
         <form className="free_img" onSubmit={sendMessage}>
-          <input type="text" ref={inputRef} onChange={(e) => { !blockedInput && settext(e.target.value) }} value={text} />
+          <input type="text" ref={inputRef}
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setIsFocused(false)} onChange={(e) => { !blockedInput && settext(e.target.value) }} value={text} />
         </form>
         <div className='App_terminal' onClick={() => {
           handleFocus()
@@ -180,9 +189,11 @@ function App() {
                 </div>
                 <div className='App_terminal_element_text'>
                   {text}
-                  <div className="free_img App_terminal_element_text_caret_wrapper">
-                    <span className='App_terminal_element_text_caret'></span>
-                  </div>
+                  {
+                    IsFocused && <div className="free_img App_terminal_element_text_caret_wrapper">
+                      <span className='App_terminal_element_text_caret'></span>
+                    </div>
+                  }
                 </div>
               </div>
               :
