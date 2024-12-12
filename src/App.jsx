@@ -309,8 +309,11 @@ function App() {
                     {loadingType === 0 && "Thinking..."}
                     {loadingType === 1 && "The test is done and you are..."}
                     {loadingType === 2 && "Loading..."}
-                  </div> : <a className='App_terminal_element_text_link App_terminal_element_text' target='_blank' href={`https://x.com/intent/post?hashtags=GIGAI&text=I+REACHED+RANK+'${rank}'+ON+GIGAI.CO%0D%0A&url=https://gigai.co%0D%0A`}>
-                    Share to your frens!
+                    {/* </div> : <a className='App_terminal_element_text_link App_terminal_element_text' target='_blank' href={`https://x.com/intent/post?hashtags=GIGAI&text=I+REACHED+RANK+'${rank}'+ON+GIGAI.CO%0D%0A&url=https://gigai.co%0D%0A`}> */}
+                  </div> : <a className='App_terminal_element_text_link App_terminal_element_text' target='_blank' href={`https://x.com/intent/post?text=%40giga_terminal%20identified%20me%20as%20%22${rank}%22%2C%20what%27s%20your%20title%3F%20%24GIGAT
+&url=https://gigai.co%0D%0A`}>
+                    {/* Share your title with your frens ;] */}
+                    Share your title with your retarded frens ;]
                   </a>}
 
                 </div>
