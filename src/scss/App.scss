@@ -40,14 +40,22 @@
             z-index: 99;
             font-size: 48px;
             justify-content: left;
-            left: 32px;
+            left: 80px;
             color: #000;
+            // color: #63e940;
             text-shadow: 2.00px 0.00px #63e940, 1.85px 0.77px #63e940, 1.41px 1.41px #63e940, 0.77px 1.85px #63e940, 0.00px 2.00px #63e940, -0.77px 1.85px #63e940, -1.41px 1.41px #63e940, -1.85px 0.77px #63e940, -2.00px 0.00px #63e940, -1.85px -0.77px #63e940, -1.41px -1.41px #63e940, -0.77px -1.85px #63e940, -0.00px -2.00px #63e940, 0.77px -1.85px #63e940, 1.41px -1.41px #63e940, 1.85px -0.77px #63e940, 0px 0px 10px #000;
             align-items: end;
 
+            @media(max-width: 1050px) {
+                left: 0px;
+            }
+
             @media(max-width: 900px) {
                 font-size: 24px;
+                left: 100px;
+
             }
+
 
             &:hover {
                 scale: 1;
