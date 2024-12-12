@@ -10,6 +10,7 @@ function App() {
   const [text, settext] = useState('');
   const [blockedInput, setblockedInput] = useState(false);
   const [chat, setchat] = useState([]);
+  const [rank, setrank] = useState('');
   // const [id, setid] = useState(localStorage.getItem('id') || '');
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -52,10 +53,27 @@ function App() {
       });
       const data = await response.json();
 
-      setchat([...chat, {
-        toMe: true,
-        message: data
-      }])
+      if ([
+        "Rugger",
+        "Nigger",
+        "Gay",
+        "Diamond Hands",
+        "Giga Chad"
+      ].includes(data)) {
+        setblockedInput(true)
+        setloadingType(3)
+        setrank(data)
+        setchat([...chat, {
+          toMe: true,
+          message: `Congratulations, you are "${data}"!`
+        }])
+
+      } else {
+        setchat([...chat, {
+          toMe: true,
+          message: data
+        }])
+      }
     }
     init()
   }, [])
@@ -94,6 +112,8 @@ function App() {
 
   }, [chat])
 
+  const [loadingType, setloadingType] = useState(0);
+
   const sendMessage = async (e) => {
     e.preventDefault()
     const sentText = text.slice(0, text.length);
@@ -120,30 +140,42 @@ function App() {
       }),
     });
     const data = await response.json();
-    console.log(data);
+    if ([
+      "Rugger",
+      "Nigger",
+      "Gay",
+      "Diamond Hands",
+      "Giga Chad"
+    ].includes(data)) {
 
-    // 5 баллов - Giga Chad, 4 - Diamond Hands, 3 - Gay, 2 - Nigger, 1 и 0 - Rugger
+      setloadingType(1)
 
-    // The test is done and you are…
+      setTimeout(() => {
+        setloadingType(2)
+      }, 2000);
+      setTimeout(() => {
+        setloadingType(3)
+        newChat.push({
+          toMe: true,
+          message: `Congratulations, you are "${data}"!`
+        })
+        setrank(data)
+        setchat(newChat)
+      }, 4000);
 
-    // Loading…
 
-    // Congratulations, you are «роль»!
+    } else {
+      newChat.push({
+        toMe: true,
+        message: data
+      })
+      setchat(newChat)
 
-    // Now…gtfo of here
-
-
-    newChat.push({
-      toMe: true,
-      message: data
-    })
-    setchat(newChat)
-
-    setblockedInput(false)
-
+      setblockedInput(false)
+    }
 
   }
-
+  // 
 
 
   return (
@@ -202,9 +234,14 @@ function App() {
                   G &gt;
                   {/* &lt; */}
                 </div>
-                <div className='App_terminal_element_text'>
-                  Thinking...
-                </div>
+                {loadingType < 3 ? <div className={`App_terminal_element_text `}>
+                  {loadingType === 0 && "Thinking..."}
+                  {loadingType === 1 && "The test is done and you are..."}
+                  {loadingType === 2 && "Loading..."}
+                </div> : <a className='App_terminal_element_text_link App_terminal_element_text' target='_blank' href={`https://x.com/intent/post?hashtags=GIGAI&text=I+REACHED+RANK+'${rank}'+ON+GIGAI.CO%0D%0A&url=https://gigai.co%0D%0A`}>
+                  Share to your frens!
+                </a>}
+
               </div>
           }
         </div>
