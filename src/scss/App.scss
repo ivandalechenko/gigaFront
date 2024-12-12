@@ -13,6 +13,20 @@
         align-content: end;
     }
 
+    &_noise {
+        width: 100%;
+        z-index: 999999;
+        align-items: start;
+
+        video {
+            opacity: .2;
+            pointer-events: none;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+        }
+    }
+
     &_terminalAndDeco {
         position: relative;
         z-index: 99;

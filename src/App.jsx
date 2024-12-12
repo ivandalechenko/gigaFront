@@ -237,84 +237,93 @@ function App() {
 
 
   return (
-    <div className='App'>
-      <div className='App_bgs'>
-        <div className="App_bg free_img">
-          <div className='App_bg_inner'></div>
-        </div>
-        <div className="App_bgLight free_img" style={{
-          opacity: opacity
-        }}>
-          <div className='App_bgLight_inner'></div>
-        </div>
+    <div className='App_andNoise'>
+      <div className="free_img App_noise">
+        <video autoPlay loop muted playsInline >
+          <source src="/img/noise.mp4" type="video/mp4" />
+        </video>
       </div>
-      <div className='App_terminalAndDeco'>
-        <form className="free_img" onSubmit={sendMessage}>
-          <input type="text" ref={inputRef}
-            onFocus={() => setIsFocused(true)}
-            onBlur={() => setIsFocused(false)} onChange={(e) => { !blockedInput && settext(e.target.value) }} value={text} />
-        </form>
-        <div className='App_terminal' onClick={() => {
-          handleFocus()
-        }}>
+      <div className='App'>
 
-          {
-            chat.map((message, index) => {
-              return <div className='App_terminal_element' key={`message-${index}`}>
-                <div className='App_terminal_element_from'>
-                  {message.toMe ? <>G &gt;</> : <>Y &gt;</>}
-                </div>
-                <div className='App_terminal_element_text'>
-                  {message.message}
-                </div>
-              </div>
-            })
-          }
-          {
-            !blockedInput ?
-              <div className='App_terminal_element'>
-                <div className='App_terminal_element_from'>
-                  Y &gt;
-                  {/* &lt; */}
-                </div>
-                <div className='App_terminal_element_text'>
-                  {text}
-                  {
-                    IsFocused && <div className="free_img App_terminal_element_text_caret_wrapper">
-                      <span className='App_terminal_element_text_caret'></span>
-                    </div>
-                  }
-                </div>
-              </div>
-              :
-              <div className='App_terminal_element'>
-                <div className='App_terminal_element_from'>
-                  G &gt;
-                  {/* &lt; */}
-                </div>
-                {loadingType < 3 ? <div className={`App_terminal_element_text `}>
-                  {loadingType === 0 && "Thinking..."}
-                  {loadingType === 1 && "The test is done and you are..."}
-                  {loadingType === 2 && "Loading..."}
-                </div> : <a className='App_terminal_element_text_link App_terminal_element_text' target='_blank' href={`https://x.com/intent/post?hashtags=GIGAI&text=I+REACHED+RANK+'${rank}'+ON+GIGAI.CO%0D%0A&url=https://gigai.co%0D%0A`}>
-                  Share to your frens!
-                </a>}
+        <div className='App_bgs'>
+          <div className="App_bg free_img">
+            <div className='App_bg_inner'></div>
+          </div>
+          <div className="App_bgLight free_img" style={{
+            opacity: opacity
+          }}>
+            <div className='App_bgLight_inner'></div>
+          </div>
+        </div>
+        <div className='App_terminalAndDeco'>
+          <form className="free_img" onSubmit={sendMessage}>
+            <input type="text" ref={inputRef}
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setIsFocused(false)} onChange={(e) => { !blockedInput && settext(e.target.value) }} value={text} />
+          </form>
+          <div className='App_terminal' onClick={() => {
+            handleFocus()
+          }}>
 
-              </div>
-          }
+            {
+              chat.map((message, index) => {
+                return <div className='App_terminal_element' key={`message-${index}`}>
+                  <div className='App_terminal_element_from'>
+                    {message.toMe ? <>G &gt;</> : <>Y &gt;</>}
+                  </div>
+                  <div className='App_terminal_element_text'>
+                    {message.message}
+                  </div>
+                </div>
+              })
+            }
+            {
+              !blockedInput ?
+                <div className='App_terminal_element'>
+                  <div className='App_terminal_element_from'>
+                    Y &gt;
+                    {/* &lt; */}
+                  </div>
+                  <div className='App_terminal_element_text'>
+                    {text}
+                    {
+                      IsFocused && <div className="free_img App_terminal_element_text_caret_wrapper">
+                        <span className='App_terminal_element_text_caret'></span>
+                      </div>
+                    }
+                  </div>
+                </div>
+                :
+                <div className='App_terminal_element'>
+                  <div className='App_terminal_element_from'>
+                    G &gt;
+                    {/* &lt; */}
+                  </div>
+                  {loadingType < 3 ? <div className={`App_terminal_element_text `}>
+                    {loadingType === 0 && "Thinking..."}
+                    {loadingType === 1 && "The test is done and you are..."}
+                    {loadingType === 2 && "Loading..."}
+                  </div> : <a className='App_terminal_element_text_link App_terminal_element_text' target='_blank' href={`https://x.com/intent/post?hashtags=GIGAI&text=I+REACHED+RANK+'${rank}'+ON+GIGAI.CO%0D%0A&url=https://gigai.co%0D%0A`}>
+                    Share to your frens!
+                  </a>}
+
+                </div>
+            }
+          </div>
         </div>
-      </div>
-      <div className='App_decor'>
-        <div className="free_img">
-          <img src="/img/gigaSer.png" alt="" />
-        </div>
-        <div className="free_img App_decor_light" style={{
-          opacity: opacity
-        }}>
-          <img src="/img/gigaSerLight.png" alt="" />
+        <div className='App_decor'>
+          <div className="free_img">
+            <img src="/img/gigaSer.png" alt="" />
+          </div>
+          <div className="free_img App_decor_light" style={{
+            opacity: opacity
+          }}>
+            <img src="/img/gigaSerLight.png" alt="" />
+          </div>
         </div>
       </div>
     </div>
+
   )
 }
 
