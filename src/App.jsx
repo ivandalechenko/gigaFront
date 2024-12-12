@@ -261,6 +261,9 @@ function App() {
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)} onChange={(e) => { !blockedInput && settext(e.target.value) }} value={text} />
           </form>
+          <div className='free_img App_mediaEl App_mediaEl_1'>
+            <img src="/img/dex.svg" alt="" />
+          </div>
           <div className='App_terminal' onClick={() => {
             handleFocus()
           }}>
@@ -310,6 +313,12 @@ function App() {
                 </div>
             }
           </div>
+          <div className='free_img App_mediaEl App_mediaEl_2'>
+            <img src="/img/tg.svg" alt="" />
+          </div>
+          <a href="https://google.com" target='_blank' className='free_img App_mediaEl App_mediaEl_3'>
+            <img src="/img/x.svg" alt="" />
+          </a>
         </div>
         <div className='App_decor'>
           <div className="free_img">
