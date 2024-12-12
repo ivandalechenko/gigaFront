@@ -41,7 +41,7 @@ function App() {
   useEffect(() => {
 
     const init = async () => {
-      const response = await fetch('https://gigai.co/quest/getQuest/', {
+      const response = await fetch('https://api.gigai.co/quest/getQuest/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json' // Исправленный заголовок
