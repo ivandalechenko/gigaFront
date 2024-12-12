@@ -102,7 +102,7 @@ function App() {
     setchat(newChat)
 
 
-    const response = await fetch('http://localhost:5000/quest/answer/', {
+    const response = await fetch('https://api.gigai.co/quest/answer/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json' // Исправленный заголовок

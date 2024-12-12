@@ -1,0 +1,46 @@
+
+name: Backend deployment to server
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deployment
+        id: deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          script: |
+            set -e
+            
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            
+            cd /home/front_giga
+            
+            echo "Pulling the latest code from the repository"
+            git pull 
+            
+            echo "Installing dependencies"
+            npm install
+            
+            echo "Building the project"
+            npm run build
+            
+            echo "Restarting the server"
+            
+            echo "Deployment completed successfully"
+
+      - name: Set status
+        if: always()
+        run: |
+          echo "status=${{ steps.deploy.outcome }}" >> $GITHUB_ENV
+
