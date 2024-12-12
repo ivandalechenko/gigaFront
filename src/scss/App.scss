@@ -7,6 +7,12 @@
     flex-wrap: wrap;
     align-content: space-between;
 
+    @media(max-width: 900px) {
+        flex-wrap: wrap;
+        align-items: end;
+        align-content: end;
+    }
+
     &_terminalAndDeco {
         position: relative;
         z-index: 99;
@@ -18,6 +24,14 @@
             opacity: 0;
         }
 
+        @media(max-width: 900px) {
+            width: 100%;
+            order: 2;
+        }
+
+        @media(max-width: 900px) {
+            left: 0px;
+        }
     }
 
     &_terminal {
@@ -34,20 +48,53 @@
         row-gap: 24px;
         overflow: hidden;
 
+        @media(max-width: 1400px) {
+            padding: 32px;
+            row-gap: 18px;
+            width: calc(100vw - 500px);
+        }
+
+        @media(max-width: 900px) {
+            height: 50vh;
+            width: 100%;
+            border-radius: 0px;
+        }
+
+        @media(max-width: 500px) {
+            row-gap: 12px;
+            padding: 24px;
+        }
+
         &_element {
             width: 100%;
             display: flex;
             align-items: start;
             column-gap: 16px;
 
+            @media(max-width: 1400px) {
+                column-gap: 12px;
+            }
+
+            @media(max-width: 500px) {
+                column-gap: 8px;
+            }
+
             &_from {
                 min-width: 68px;
+
+                @media(max-width: 1400px) {
+                    min-width: 48px;
+                }
             }
 
             &_from,
             &_text {
                 font-size: 32px;
                 color: #63E940;
+
+                @media(max-width: 1400px) {
+                    font-size: 24px;
+                }
             }
 
             &_text_caret {
@@ -91,11 +138,26 @@
             justify-content: right;
             align-items: end;
             transition: opacity 100ms;
+
+            img {
+                @media(max-width: 1400px) {
+                    width: 500px;
+                }
+
+                @media(max-width: 900px) {
+                    max-width: 100vw;
+                    max-height: 50vh;
+                }
+            }
         }
     }
 
     &_bgs {
         width: 100%;
+
+        @media(max-width: 900px) {
+            order: 3;
+        }
     }
 
     &_bg,
@@ -104,6 +166,10 @@
         justify-content: center;
         align-items: start;
         transition: opacity 100ms;
+
+        @media(max-width: 900px) {
+            align-items: end;
+        }
 
         &_inner {
             min-width: 100vw;
