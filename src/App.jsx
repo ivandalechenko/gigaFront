@@ -261,6 +261,9 @@ function App() {
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)} onChange={(e) => { !blockedInput && settext(e.target.value) }} value={text} />
           </form>
+          <div className='free_img App_mediaEl App_mediaEl_0'>
+            GIGA_TERMINAL
+          </div>
           <div className='free_img App_mediaEl App_mediaEl_1'>
             <img src="/img/dex.svg" alt="" />
           </div>
